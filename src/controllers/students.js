@@ -1,18 +1,22 @@
 export class Student {
     name;
-/**
- * @param {string} name
- * 
- * @method showName();
- * 
- */
-    
-    getName(name) {
-        this.name = name
+    age;
+    emphasis;
+    description;
+
+
+    getInfo(name, age, emphasis, description) {
+        this.name = name;
+        this.age = age;
+        this.emphasis = emphasis;
+        this.description = description;
     }
 
-    showName() {
-        console.log(`your name is: ${this.name}`);
+    showInfo() {
+        this.name && console.log('your name is: ', this.name);
+        this.age && console.log('your age is: ', this.age);
+        this.emphasis && console.log('your emphasis is: ', this.emphasis);
+        this.description && console.log('your description is: ', this.description);
     }
 
 }
