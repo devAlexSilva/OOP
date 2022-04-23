@@ -1,5 +1,3 @@
-//import { random } from './funcAuxiliar.js'
-
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 
@@ -38,6 +36,6 @@ class Ball {
     }
 }
 
-const testDrawningBall = new Ball(100, 50, 5, 5, 'green', 25);
+const testDrawningBall = new Ball(100, 50, 5, 5, 'red', 25);
 
 testDrawningBall.draw()
