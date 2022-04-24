@@ -4,8 +4,6 @@ const ctx = canvas.getContext('2d');
 const width = canvas.width = window.innerWidth;
 const height = canvas.height = window.innerHeight;
 
-console.log(width)
-
 
 const random = {
     number: function (min, max) {
@@ -22,7 +20,7 @@ class Ball {
         this.x = x;
         this.y = y;
         this.velX = velX;
-        this.vely = velY;
+        this.velY = velY;
         this.color = color;
         this.size = size;
     }
@@ -35,19 +33,11 @@ class Ball {
     }
 
     update() {
-        if ((this.x + this.size) >= width) {
+        if (this.x + (this.size * 4) >= width || this.x - this.size <= 0) {
             this.velX = -(this.velX);
         }
 
-        if ((this.x - this.size) <= 0) {
-            this.velX = -(this.velX);
-        }
-
-        if ((this.y + this.size) >= height) {
-            this.velY = -(this.velY);
-        }
-
-        if ((this.y - this.size) <= 0) {
+        if (this.y + this.size >= height || this.y - this.size <= 0) {
             this.velY = -(this.velY);
         }
 
@@ -55,7 +45,6 @@ class Ball {
         this.y += this.velY;
     }
 }
-
 
 const balls = Array.from({ length: 15 }, (ball) => {
     let size = random.number(10, 20);
@@ -71,18 +60,14 @@ const balls = Array.from({ length: 15 }, (ball) => {
     );
 });
 
-
-
-function loop() {
-    ctx.fillStyle = 'rgba(220, 100, 220, 0.25)';
+(function loop() {
+    ctx.fillStyle = 'rgba(10, 0, 0, 0.25)';
     ctx.fillRect(0, 0, width, height)
 
     balls.forEach(ball => {
         ball.draw();
         ball.update();
-    })
+    });
 
-    requestAnimationFrame(loop);
-}
-
-loop()
+    requestAnimationFrame(loop)
+})()
